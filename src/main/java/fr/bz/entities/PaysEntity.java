@@ -16,4 +16,7 @@ public class PaysEntity {
     @ManyToOne
     @JoinColumn(name = "CODE_CONTINENT")
     private ContinentEntity continent;
+    @ManyToOne
+    @JoinColumn(name="CODE_ISO_MONNAIE")
+    private MonnaieEntity monnaie;
 }
