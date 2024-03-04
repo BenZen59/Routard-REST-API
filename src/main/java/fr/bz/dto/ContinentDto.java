@@ -1,7 +1,9 @@
 package fr.bz.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.bz.entities.ContinentEntity;
+import fr.bz.entities.PaysEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,11 +17,17 @@ public class ContinentDto {
     private String codeContinent;
     @JsonProperty(index = 2)
     private String nomContinent;
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonProperty(index = 3)
+    private List<PaysDto> pays;
 
     public ContinentDto(ContinentEntity continentEntity) {
         codeContinent = continentEntity.getCodeContinent();
         nomContinent = continentEntity.getNomContinent();
+        pays = PaysDto.toDtoList(continentEntity.getPays());
+
     }
+
 
     public static List<ContinentDto> toDtoList(List<ContinentEntity> continentEntities) {
         List<ContinentDto> continentDtoList = new ArrayList<>();

@@ -2,7 +2,9 @@ package fr.bz.resources;
 
 import fr.bz.dto.ContinentDto;
 import fr.bz.entities.ContinentEntity;
+import fr.bz.entities.PaysEntity;
 import fr.bz.repositories.ContinentRepository;
+import fr.bz.repositories.PaysRepository;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -23,6 +25,8 @@ import java.util.List;
 public class ContinentResources {
     @Inject
     private ContinentRepository continentRepository;
+    @Inject
+    private PaysRepository paysRepository;
 
     @GET
     public Response getAll() {
@@ -43,5 +47,16 @@ public class ContinentResources {
 
             return Response.ok(continent).build();
     }
-}
+
+    @GET
+    @Path("/{codeContinent}/pays")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPaysByContinent(@PathParam("codeContinent") String codeContinent) {
+        List<PaysEntity> paysEntities = (List<PaysEntity>) paysRepository.findById(codeContinent);
+        if (paysEntities.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(paysEntities).build();
+
+    }}
 
