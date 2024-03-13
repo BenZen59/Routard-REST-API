@@ -28,11 +28,8 @@ public class PaysDto {
         codeIso31661 = paysEntity.getCodeIso31661();
         nomPays = paysEntity.getNomPays();
         continent = new ContinentDto(paysEntity.getContinent());
-        if (paysEntity.getMonnaie() != null) {
+        if (paysEntity.getMonnaie() != null)
             monnaie = new MonnaieDto(paysEntity.getMonnaie());
-        } else {
-            monnaie = null;
-        }
     }
 
     public static List<PaysDto> toDtoList(List<PaysEntity> paysEntities) {

@@ -17,15 +17,10 @@ public class ContinentDto {
     private String codeContinent;
     @JsonProperty(index = 2)
     private String nomContinent;
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    @JsonProperty(index = 3)
-    private List<PaysDto> pays;
 
     public ContinentDto(ContinentEntity continentEntity) {
         codeContinent = continentEntity.getCodeContinent();
         nomContinent = continentEntity.getNomContinent();
-        pays = PaysDto.toDtoList(continentEntity.getPays());
-
     }
 
 

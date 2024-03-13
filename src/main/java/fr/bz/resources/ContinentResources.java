@@ -21,7 +21,6 @@ import java.util.List;
 @Path("/continents/")
 @Tag(name = "Continent")
 @Produces(MediaType.APPLICATION_JSON)
-
 public class ContinentResources {
     @Inject
     private ContinentRepository continentRepository;
@@ -48,15 +47,19 @@ public class ContinentResources {
             return Response.ok(continent).build();
     }
 
-    @GET
-    @Path("/{codeContinent}/pays")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getPaysByContinent(@PathParam("codeContinent") String codeContinent) {
-        List<PaysEntity> paysEntities = (List<PaysEntity>) paysRepository.findById(codeContinent);
-        if (paysEntities.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        return Response.ok(paysEntities).build();
 
-    }}
+    @GET
+    @Operation(summary = "Pays d'un continent", description = "Récupérer les pays d'un continent par son code")
+    @APIResponse(responseCode = "200", description = "Ok, pays trouvés")
+    @APIResponse(responseCode = "404", description = "Aucun pays trouvé pour ce continent")
+    @Path("{codeContinent}/pays")
+    public Response getPaysByContinent(@PathParam("codeContinent") String codeContinent) {
+        List<PaysEntity> paysEntities = paysRepository.findByContinentCodeContinent(codeContinent);
+        if (paysEntities.isEmpty()) {
+            return Response.status(404, "Aucun pays trouvé pour ce continent ! ").build();
+        } else {
+            return Response.ok(paysEntities).build();
+        }
+    }
+}
 

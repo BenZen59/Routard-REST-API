@@ -7,5 +7,4 @@ import jakarta.enterprise.context.RequestScoped;
 @RequestScoped
 public class MonnaieRepository implements PanacheRepositoryBase<MonnaieEntity, String> {
 
-
 }
