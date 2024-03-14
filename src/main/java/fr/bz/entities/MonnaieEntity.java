@@ -3,22 +3,17 @@ package fr.bz.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity(name = "MONNAIE")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class MonnaieEntity {
     @Id
     @Column(name = "CODE_ISO_MONNAIE")
     private String codeIsoMonnaie;
     @Column(name = "NOM_DEVISE")
     private String nomDevise;
-
-    public MonnaieEntity() {
-
-    }
 }

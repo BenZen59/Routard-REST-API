@@ -14,16 +14,11 @@ import java.util.List;
 @Entity(name = "CONTINENT")
 @Getter
 @Setter
-@AllArgsConstructor
+
 public class ContinentEntity {
     @Id
     @Column(name = "CODE_CONTINENT")
     private String codeContinent;
     @Column(name = "NOM_CONTINENT")
     private String nomContinent;
-
-
-    public ContinentEntity() {
-
-    }
 }

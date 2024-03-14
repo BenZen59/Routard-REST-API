@@ -23,7 +23,6 @@ public class ContinentDto {
         nomContinent = continentEntity.getNomContinent();
     }
 
-
     public static List<ContinentDto> toDtoList(List<ContinentEntity> continentEntities) {
         List<ContinentDto> continentDtoList = new ArrayList<>();
         for (ContinentEntity continentEntity : continentEntities)

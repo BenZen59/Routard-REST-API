@@ -1,7 +1,7 @@
 package fr.bz.resources;
 
-import fr.bz.dto.ContinentDto;
 import fr.bz.dto.MonnaieDto;
+import fr.bz.dto.NewMonnaieDto;
 import fr.bz.entities.MonnaieEntity;
 import fr.bz.repositories.MonnaieRepository;
 import jakarta.inject.Inject;
@@ -46,7 +46,7 @@ public class MonnaieResources {
 
 
     @POST
-    @Path("/createMonnaie")
+    @Path("createMonnaie")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Créer une monnaie", description = "Créer une nouvelle monnaie")
@@ -54,16 +54,21 @@ public class MonnaieResources {
     @APIResponse(responseCode = "400", description = "Mauvaise requête, les données envoyées ne sont pas valides")
     @Transactional
 
-    public Response createMonnaie(MonnaieEntity nouvelleMonnaie) {
-        if (nouvelleMonnaie == null || nouvelleMonnaie.getCodeIsoMonnaie() == null || nouvelleMonnaie.getNomDevise() == null || nouvelleMonnaie == null || nouvelleMonnaie.getCodeIsoMonnaie() == null || nouvelleMonnaie.getNomDevise() == null) {
+    public Response createMonnaie(NewMonnaieDto newMonnaieDto) {
+        if (newMonnaieDto == null || newMonnaieDto.getCodeIsoMonnaie() == null || newMonnaieDto.getNomDevise() == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Les données envoyées ne sont pas valides").build();
         }
 
-        if (nouvelleMonnaie.getCodeIsoMonnaie().length() > 3) {
+        if (newMonnaieDto.getCodeIsoMonnaie().length() > 3) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Le code de la monnaie ne doit pas faire plus de 3 caractères").build();
         }
 
-        monnaieRepository.persist(nouvelleMonnaie);
+        MonnaieEntity monnaieEntity = MonnaieEntity
+                .builder()
+                .codeIsoMonnaie(newMonnaieDto.getCodeIsoMonnaie())
+                .nomDevise(newMonnaieDto.getNomDevise())
+                .build();
+        monnaieRepository.persist(monnaieEntity);
         return Response.status(201).entity("Nouvelle monnaie créée avec succès").build();
     }
 }
