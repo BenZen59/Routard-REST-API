@@ -46,7 +46,6 @@ public class MonnaieResources {
 
 
     @POST
-    @Path("createMonnaie")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Créer une monnaie", description = "Créer une nouvelle monnaie")
@@ -59,17 +58,33 @@ public class MonnaieResources {
             return Response.status(Response.Status.BAD_REQUEST).entity("Les données envoyées ne sont pas valides").build();
         }
 
-        if (newMonnaieDto.getCodeIsoMonnaie().length() > 3) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Le code de la monnaie ne doit pas faire plus de 3 caractères").build();
+        if (newMonnaieDto.getCodeIsoMonnaie().length() != 3) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Le code de la monnaie doit faire 3 caractères").build();
         }
 
         MonnaieEntity monnaieEntity = MonnaieEntity
                 .builder()
-                .codeIsoMonnaie(newMonnaieDto.getCodeIsoMonnaie())
+                .codeIsoMonnaie(newMonnaieDto.getCodeIsoMonnaie().toUpperCase())
                 .nomDevise(newMonnaieDto.getNomDevise())
                 .build();
         monnaieRepository.persist(monnaieEntity);
         return Response.status(201).entity("Nouvelle monnaie créée avec succès").build();
+    }
+
+    @DELETE
+    @Path("{codeIsoMonnaie}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Operation(summary = "Supprimer une monnaie", description = "Supprimer une monnaie existante")
+    @APIResponse(responseCode = "200", description = "Monnaie supprimée avec succès")
+    @APIResponse(responseCode = "404", description = "Monnaie non trouvée")
+    @Transactional
+    public Response deleteMonnaie(@PathParam("codeIsoMonnaie") String codeIsoMonnaie){
+        MonnaieEntity monnaieEntity = monnaieRepository.findById(codeIsoMonnaie.toUpperCase());
+        if (monnaieEntity == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("La monnaie n'a pas été trouvée").build();
+        }
+        monnaieRepository.deleteById(codeIsoMonnaie);
+        return Response.ok("La monnaie a été supprimée avec succès").build();
     }
 }
 
