@@ -11,7 +11,6 @@ import java.util.List;
 
 @Getter
 @Setter
-
 public class PaysDto {
     @JsonProperty(index = 1)
     private String codeIso31661;
