@@ -1,7 +1,7 @@
 package fr.bz.resources;
 
+import fr.bz.dto.PaysByIdDto;
 import fr.bz.entities.PaysEntity;
-import fr.bz.repositories.ContinentRepository;
 import fr.bz.repositories.PaysRepository;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -18,9 +18,6 @@ public class PaysResources {
     @Inject
     private PaysRepository paysRepository;
 
-    @Inject
-    ContinentRepository continentRepository;
-
     @GET
     @Path("{codeIso31661}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
@@ -33,6 +30,7 @@ public class PaysResources {
         if (pays == null) {
             return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Ce code de pays n'existe pas !").build();
         }
-        return Response.ok(pays).build();
+        PaysByIdDto paysByIdDto = new PaysByIdDto(pays);
+        return Response.ok(paysByIdDto).build();
     }
 }
