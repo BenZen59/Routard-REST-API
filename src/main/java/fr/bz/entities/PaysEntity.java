@@ -1,8 +1,9 @@
 package fr.bz.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity(name = "PAYS")
 @Data
@@ -21,4 +22,6 @@ public class PaysEntity {
     @ManyToOne
     @JoinColumn(name = "CODE_ISO_MONNAIE")
     private MonnaieEntity monnaie;
+    @OneToMany(mappedBy = "pays")
+    private List<ParlerEntity> parlerEntityList;
 }
