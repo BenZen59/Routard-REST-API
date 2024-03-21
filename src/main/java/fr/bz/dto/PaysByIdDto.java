@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class PaysDto {
+public class PaysByIdDto {
     @JsonProperty(index = 1)
     private String codeIso31661;
     @JsonProperty(index = 2)
@@ -22,7 +22,7 @@ public class PaysDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private MonnaieDto monnaie;
 
-    public PaysDto(PaysEntity paysEntity) {
+    public PaysByIdDto(PaysEntity paysEntity) {
         codeIso31661 = paysEntity.getCodeIso31661();
         nomPays = paysEntity.getNomPays();
         continent = new ContinentDto(paysEntity.getContinent());
@@ -30,10 +30,10 @@ public class PaysDto {
             monnaie = new MonnaieDto(paysEntity.getMonnaie());
     }
 
-    public static List<PaysDto> toDtoList(List<PaysEntity> paysEntities) {
-        List<PaysDto> paysDtoList = new ArrayList<>();
+    public static List<PaysByIdDto> toDtoList(List<PaysEntity> paysEntities) {
+        List<PaysByIdDto> paysDtoList = new ArrayList<>();
         for (PaysEntity paysEntity : paysEntities)
-            paysDtoList.add(new PaysDto(paysEntity));
+            paysDtoList.add(new PaysByIdDto(paysEntity));
         return paysDtoList;
     }
 }

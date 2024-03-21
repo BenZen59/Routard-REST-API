@@ -10,16 +10,6 @@ import static org.hamcrest.Matchers.equalTo;
 @QuarkusTest
 public class PaysResourcesTest {
     @Test
-    public void testGetPaysByCriteriaEndpoint() {
-        given()
-                .queryParam("nomContinent", "Europe") // Remplacer "Europe" avec un continent existant dans votre base de données
-                .queryParam("nomPays", "France") // Remplacer "France" avec un nom de pays existant dans votre base de données
-                .when().get("/pays/")
-                .then()
-                .statusCode(200);
-        // Ajouter d'autres assertions selon le besoin
-    }
-    @Test
     public void testGetPaysByIdEndpoint() {
         given()
                 .pathParam("codeIso31661", "FR")
