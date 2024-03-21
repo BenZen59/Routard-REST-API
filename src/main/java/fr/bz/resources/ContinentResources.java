@@ -30,24 +30,9 @@ public class ContinentResources {
     @GET
     public Response getAll() {
         List<ContinentEntity> continentEntities = continentRepository.listAll();
-        return Response.ok(ContinentDto.toDtoList(continentEntities)).build();
+        return Response.ok(ContinentDto. toDtoList(continentEntities)).build();
     }
-
-    @GET
-    @Operation(summary = "Continent par code", description = "Chercher les continents par code")
-    @APIResponse(responseCode = "200", description = "Ok, continent trouvé")
-    @APIResponse(responseCode = "404", description = "Continent non trouvé")
-    @Path("{codeContinent}")
-    public Response getById(@PathParam("codeContinent") String codeContinent) {
-        ContinentEntity continent = continentRepository.findById(codeContinent);
-        if (continent == null)
-            return Response.status(404, "Ce code de continent n'existe pas !").build();
-        else
-
-            return Response.ok(continent).build();
-    }
-
-
+    
     @GET
     @Operation(summary = "Pays d'un continent", description = "Récupérer les pays d'un continent par son code")
     @APIResponse(responseCode = "200", description = "Ok, pays trouvés")

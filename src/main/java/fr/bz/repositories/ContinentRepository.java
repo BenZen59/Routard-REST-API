@@ -18,4 +18,13 @@ public class ContinentRepository implements PanacheRepositoryBase<ContinentEntit
             return continents.get(0);
         }
     }
+
+    public ContinentEntity findByName(String nomContinent) {
+        List<ContinentEntity> continents = list("nomContinent", nomContinent);
+        if (continents.isEmpty()) {
+            return null;
+        } else {
+            return continents.get(0);
+        }
+    }
 }
