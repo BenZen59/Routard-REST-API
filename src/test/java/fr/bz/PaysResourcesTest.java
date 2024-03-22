@@ -28,4 +28,24 @@ public class PaysResourcesTest {
                 .then()
                 .statusCode(404);
     }
+
+    @Test
+    public void testGetSubdivisionByPaysEndpoint() {
+       String codeIso31661 = "FR";
+        given()
+                .pathParam("codeIso31661", "FR")
+                .when().get("/pays/{codeIso31661}/subdivisions")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON);
+    }
+
+    @Test
+    public void testGetSubdivisionByPaysEndpoint_NotFound() {
+        given()
+                .pathParam("codeIso31661", "xx") // Remplacer "xx" avec un codeIso31661 qui n'existe pas dans votre base de données
+                .when().get("/pays/{codeIso31661}/subdivisions")
+                .then()
+                .statusCode(404);
+    }
 }
