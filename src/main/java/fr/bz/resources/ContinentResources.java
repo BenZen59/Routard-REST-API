@@ -42,8 +42,7 @@ public class ContinentResources {
         List<PaysEntity> paysEntities = paysRepository.findByContinentCodeContinent(codeContinent);
         // Vérifier si des pays ont été trouvés
         if (paysEntities == null || paysEntities.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Aucun pays trouvé pour ce continent").build();
-        }
+         }
         // Mapper les entités de pays vers des DTO
         List<PaysByContinentDto> paysByContinentDtoList = PaysByContinentDto.toDtoList(paysEntities);
         return Response.ok(paysByContinentDtoList).build();
