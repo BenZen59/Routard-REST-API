@@ -1,7 +1,7 @@
 package fr.bz.resources;
 
 import fr.bz.dto.PaysByIdDto;
-import fr.bz.dto.SubdivisionByPaysDto;
+import fr.bz.dto.SubdivisionDto;
 import fr.bz.entities.PaysEntity;
 import fr.bz.entities.SubdivisionEntity;
 import fr.bz.repositories.PaysRepository;
@@ -52,7 +52,7 @@ public class PaysResources {
         if(subdivisionEntities == null || subdivisionEntities.isEmpty()){
             return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Aucune subdivions trouvés pour ce pays").build();
         }
-        List<SubdivisionByPaysDto> subdivisionByPaysDtoList = SubdivisionByPaysDto.toDtoList(subdivisionEntities);
+        List<SubdivisionDto> subdivisionByPaysDtoList = SubdivisionDto.toDtoList(subdivisionEntities);
         return Response.ok(subdivisionByPaysDtoList).build();
     }
 }
