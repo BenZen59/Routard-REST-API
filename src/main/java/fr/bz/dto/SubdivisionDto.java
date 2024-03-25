@@ -2,19 +2,15 @@ package fr.bz.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fr.bz.entities.PaysEntity;
 import fr.bz.entities.SubdivisionEntity;
 import fr.bz.entities.TypeSubdivisionEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class SubdivisionByPaysDto {
+public class SubdivisionDto {
     @JsonProperty(index = 1)
     private int idSubdivision;
     @JsonProperty(index = 2)
@@ -25,7 +21,7 @@ public class SubdivisionByPaysDto {
     @JsonProperty(index = 4)
     private TypeSubdivisionEntity typeSubdivision;
 
-    public SubdivisionByPaysDto(SubdivisionEntity subdivisionEntity) {
+    public SubdivisionDto(SubdivisionEntity subdivisionEntity) {
         idSubdivision = subdivisionEntity.getIdSubdivision();
         if (subdivisionEntity.getCodeIso31662() != null)
             codeIso31662 = subdivisionEntity.getCodeIso31662();
@@ -33,10 +29,10 @@ public class SubdivisionByPaysDto {
         typeSubdivision = subdivisionEntity.getTypeSubdivision();
     }
 
-    public static List<SubdivisionByPaysDto> toDtoList(List<SubdivisionEntity> subdivisionEntities) {
-        List<SubdivisionByPaysDto> subdivisionByPaysDtoList = new ArrayList<>();
+    public static List<SubdivisionDto> toDtoList(List<SubdivisionEntity> subdivisionEntities) {
+        List<SubdivisionDto> subdivisionByPaysDtoList = new ArrayList<>();
         for (SubdivisionEntity subdivisionEntity : subdivisionEntities)
-            subdivisionByPaysDtoList.add(new SubdivisionByPaysDto(subdivisionEntity));
+            subdivisionByPaysDtoList.add(new SubdivisionDto(subdivisionEntity));
         return subdivisionByPaysDtoList;
     }
 }
