@@ -20,14 +20,14 @@ public class SubdivisionDto {
     @JsonProperty(index = 3)
     private String nomSubdivision;
     @JsonProperty(index = 4)
-    private TypeSubdivisionEntity typeSubdivision;
+    private TypeSubdivisionDto typeSubdivision;
 
     public SubdivisionDto(SubdivisionEntity subdivisionEntity) {
         idSubdivision = subdivisionEntity.getIdSubdivision();
         if (subdivisionEntity.getCodeIso31662() != null)
             codeIso31662 = subdivisionEntity.getCodeIso31662();
         nomSubdivision = subdivisionEntity.getNomSubdivision();
-        typeSubdivision = subdivisionEntity.getTypeSubdivision();
+        typeSubdivision = new TypeSubdivisionDto(subdivisionEntity.getTypeSubdivision());
     }
 
     public static List<SubdivisionDto> toDtoList(List<SubdivisionEntity> subdivisionEntities) {

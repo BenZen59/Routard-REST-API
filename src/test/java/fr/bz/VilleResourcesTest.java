@@ -12,6 +12,16 @@ public class VilleResourcesTest {
     @Test
     public void testGetVilleByIdEndpoint() {
         given()
+                .pathParam("idVille", 437)
+                .when().get("/villes/{idVille}")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("idVille", equalTo(437));
+    }
+    @Test
+    public void testGetVilleByIdWithoutClimatEndpoint() {
+        given()
                 .pathParam("idVille", 588)
                 .when().get("/villes/{idVille}")
                 .then()
@@ -19,7 +29,6 @@ public class VilleResourcesTest {
                 .contentType(ContentType.JSON)
                 .body("idVille", equalTo(588));
     }
-
     @Test
     public void testGetVilleByIdEndpoint_NotFound() {
         given()

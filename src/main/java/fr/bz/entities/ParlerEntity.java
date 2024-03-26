@@ -13,5 +13,6 @@ public class ParlerEntity {
     @Id
     @ManyToOne
     @JoinColumn(name = "CODE_ISO_3166_1", referencedColumnName = "CODE_ISO_3166_1")
+    @Getter(AccessLevel.NONE)
     private PaysEntity pays;
 }
