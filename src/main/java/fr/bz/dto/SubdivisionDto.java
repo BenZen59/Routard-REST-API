@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.bz.entities.SubdivisionEntity;
 import fr.bz.entities.TypeSubdivisionEntity;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 public class SubdivisionDto {
     @JsonProperty(index = 1)
     private int idSubdivision;

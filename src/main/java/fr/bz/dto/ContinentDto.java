@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.bz.entities.ContinentEntity;
 import fr.bz.entities.PaysEntity;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 public class ContinentDto {
     @JsonProperty(index = 1)
     private String codeContinent;

@@ -50,7 +50,7 @@ public class PaysResources {
     public Response getSubdivisionsByPays(@PathParam("codeIso31661") String codeIso31661){
         List<SubdivisionEntity> subdivisionEntities = subdivisionRepository.findByPaysCodePays(codeIso31661);
         if(subdivisionEntities == null || subdivisionEntities.isEmpty()){
-            return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Aucune subdivions trouvés pour ce pays").build();
+            return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Aucune subdivisions trouvés pour ce pays").build();
         }
         List<SubdivisionDto> subdivisionByPaysDtoList = SubdivisionDto.toDtoList(subdivisionEntities);
         return Response.ok(subdivisionByPaysDtoList).build();

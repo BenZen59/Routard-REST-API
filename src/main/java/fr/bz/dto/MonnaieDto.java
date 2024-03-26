@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 public class MonnaieDto {
     @JsonProperty(index = 1)
     private String codeIsoMonnaie;
@@ -22,10 +22,10 @@ public class MonnaieDto {
         nomDevise = monnaieEntity.getNomDevise();
     }
 
-    public static List<MonnaieDto> toDtoList(List<MonnaieEntity> monnaieEntities) {
+    /*public static List<MonnaieDto> toDtoList(List<MonnaieEntity> monnaieEntities) {
         List<MonnaieDto> monnaieDtoList = new ArrayList<>();
         for (MonnaieEntity monnaieEntity : monnaieEntities)
             monnaieDtoList.add(new MonnaieDto(monnaieEntity));
         return monnaieDtoList;
-    }
+    }*/
 }

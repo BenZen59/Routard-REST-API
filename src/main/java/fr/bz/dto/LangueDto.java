@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 public class LangueDto {
     @JsonProperty(index = 1)
     private String isoLangue;
@@ -21,10 +20,10 @@ public class LangueDto {
         nomLangue = langueEntity.getNomLangue();
     }
 
-    public static List<LangueDto> toDtoList(List<LangueEntity> langueEntities) {
+   /* public static List<LangueDto> toDtoList(List<LangueEntity> langueEntities) {
         List<LangueDto> langueDtoList = new ArrayList<>();
         for (LangueEntity langueEntity : langueEntities)
             langueDtoList.add(new LangueDto(langueEntity));
         return langueDtoList;
-    }
+    }*/
 }

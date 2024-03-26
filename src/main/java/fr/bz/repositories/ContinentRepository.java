@@ -9,22 +9,4 @@ import java.util.List;
 @RequestScoped
 public class ContinentRepository implements PanacheRepositoryBase<ContinentEntity, String> {
 
-
-    public ContinentEntity findByCodeContinent(String codeContinent) {
-        List<ContinentEntity> continents = list("codeContinent = ?1", codeContinent);
-        if (continents.isEmpty()) {
-            return null;
-        } else {
-            return continents.get(0);
-        }
-    }
-
-    public ContinentEntity findByName(String nomContinent) {
-        List<ContinentEntity> continents = list("nomContinent", nomContinent);
-        if (continents.isEmpty()) {
-            return null;
-        } else {
-            return continents.get(0);
-        }
-    }
 }

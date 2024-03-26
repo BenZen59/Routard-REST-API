@@ -7,14 +7,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-
 @Entity(name = "CONTINENT")
 @Getter
-@Setter
-
 public class ContinentEntity {
     @Id
     @Column(name = "CODE_CONTINENT")

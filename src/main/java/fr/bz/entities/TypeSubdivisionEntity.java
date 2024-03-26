@@ -3,16 +3,11 @@ package fr.bz.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity(name = "TYPE_SUBDIVISION")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
+
 public class TypeSubdivisionEntity {
     @Id
     @Column(name = "ID_TYPE")

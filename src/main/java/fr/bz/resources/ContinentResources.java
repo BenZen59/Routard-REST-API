@@ -39,11 +39,11 @@ public class ContinentResources {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{codeContinent}/pays")
     public Response getPaysByContinent(@PathParam("codeContinent") String codeContinent) {
-        List<PaysEntity> paysEntities = paysRepository.findByContinentCodeContinent(codeContinent);
-        // Vérifier si des pays ont été trouvés
-        if (paysEntities == null || paysEntities.isEmpty()) {
-         }
-        // Mapper les entités de pays vers des DTO
+        ContinentEntity foundContinent = continentRepository.findById(codeContinent);
+        if(foundContinent == null)
+            return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Ce continent n'existe pas").build();
+
+        List<PaysEntity> paysEntities = paysRepository.findCountriesCodeContinent(codeContinent);
         List<PaysByContinentDto> paysByContinentDtoList = PaysByContinentDto.toDtoList(paysEntities);
         return Response.ok(paysByContinentDtoList).build();
     }

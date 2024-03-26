@@ -10,7 +10,7 @@ import java.util.List;
 
 @RequestScoped
 public class PaysRepository implements PanacheRepositoryBase<PaysEntity, String> {
-    public List<PaysEntity> findByContinentCodeContinent(String codeContinent) {
+    public List<PaysEntity> findCountriesCodeContinent(String codeContinent) {
         Query query = getEntityManager().createQuery("SELECT p FROM PAYS p WHERE p.continent.codeContinent = :codeContinent");
         query.setParameter("codeContinent", codeContinent);
         return query.getResultList();

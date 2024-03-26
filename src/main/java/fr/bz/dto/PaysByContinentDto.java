@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 public class PaysByContinentDto {
     @JsonProperty(index = 1)
     private String codeIso31661;

@@ -1,16 +1,10 @@
 package fr.bz.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity(name = "VILLE")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
 public class VilleEntity {
     @Id
     @Column(name = "ID_VILLE")

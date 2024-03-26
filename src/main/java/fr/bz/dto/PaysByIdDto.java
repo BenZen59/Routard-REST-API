@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
+@Getter
 public class PaysByIdDto {
     @JsonProperty(index = 1)
     private String codeIso31661;
@@ -37,10 +37,4 @@ public class PaysByIdDto {
             langues = paysEntity.getParlerEntityList().stream().map(ParlerEntity::getLangue).map(LangueDto::new).collect(Collectors.toList());
     }
 
-    public static List<PaysByIdDto> toDtoList(List<PaysEntity> paysEntities) {
-        List<PaysByIdDto> paysDtoList = new ArrayList<>();
-        for (PaysEntity paysEntity : paysEntities)
-            paysDtoList.add(new PaysByIdDto(paysEntity));
-        return paysDtoList;
-    }
 }

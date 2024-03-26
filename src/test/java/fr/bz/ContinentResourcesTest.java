@@ -16,7 +16,8 @@ public class ContinentResourcesTest {
                 .when().get("/continents/")
                 .then()
                 .statusCode(200)
-                .contentType(ContentType.JSON);
+                .contentType(ContentType.JSON)
+                .body("size()", is(7));
         // You may add more assertions here based on the expected behavior
     }
 
@@ -38,6 +39,10 @@ public class ContinentResourcesTest {
                 .pathParam("codeContinent", "xx") // Remplacer "xx" avec un codeIso31661 qui n'existe pas dans votre base de données
                 .when().get("/continents/{codeContinent}/pays")
                 .then()
+                .contentType("text/plain")
+                .body(is("Ce continent n'existe pas"))
                 .statusCode(404);
     }
+
+
 }

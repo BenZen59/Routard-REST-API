@@ -6,10 +6,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 @Entity(name = "MONNAIE")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
 public class MonnaieEntity {
     @Id
     @Column(name = "CODE_ISO_MONNAIE")

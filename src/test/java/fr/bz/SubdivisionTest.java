@@ -5,26 +5,27 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.equalTo;
 
 @QuarkusTest
-public class VilleResourcesTest {
+public class SubdivisionTest {
     @Test
-    public void testGetVilleByIdEndpoint() {
+    public void testGetSubdivisionByIdEndpoint() {
         given()
-                .pathParam("idVille", 588)
-                .when().get("/villes/{idVille}")
+                .pathParam("idSubdivision", 100)
+                .when().get("/subdivisions/{idSubdivision}")
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("idVille", equalTo(588));
+                .body("idSubdivision", equalTo(100));
     }
 
     @Test
-    public void testGetVilleByIdEndpoint_NotFound() {
+    public void testGetSubdivisionByIdEndpoint_NotFound() {
         given()
-                .pathParam("idVille", 99999) // Remplacer "xx" avec un codeIso31661 qui n'existe pas dans votre base de données
-                .when().get("/villes/{idVille}")
+                .pathParam("idSubdivision", 9999)
+                .when().get("/subdivisions/{idSubdivision}")
                 .then()
                 .statusCode(404);
     }

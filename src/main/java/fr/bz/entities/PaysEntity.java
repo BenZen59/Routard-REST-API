@@ -6,10 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity(name = "PAYS")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
 public class PaysEntity {
     @Id
     @Column(name = "CODE_ISO_3166_1")

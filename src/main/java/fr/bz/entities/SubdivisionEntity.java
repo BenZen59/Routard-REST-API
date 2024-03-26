@@ -1,16 +1,10 @@
 package fr.bz.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity(name = "SUBDIVISION")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
 public class SubdivisionEntity {
     @Id
     @Column(name = "ID_SUBDIVISION")
