@@ -29,4 +29,26 @@ public class SubdivisionTest {
                 .then()
                 .statusCode(404);
     }
+
+    @Test
+    public void testGetVillesBySubdivisionEndpoint() {
+        given()
+                .pathParam("idSubdivision", 100)
+                .when().get("/subdivisions/{idSubdivision}/villes")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON);
+        // You may add more assertions here based on the expected behavior
+    }
+
+    @Test
+    public void testGetVillesBySubdivisionEndpoint_NotFound() {
+        given()
+                .pathParam("idSubdivision", 9999)
+                .when().get("/subdivisions/{idSubdivision}/villes")
+                .then()
+                .contentType("text/plain")
+                .body(is("Cet id de subdivision n'existe pas"))
+                .statusCode(404);
+    }
 }
