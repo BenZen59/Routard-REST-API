@@ -11,10 +11,10 @@ import lombok.Getter;
 public class CategoriserEntity {
     @Id
     @ManyToOne
-    @JoinColumn(name = "ID_POINT_INTERET", referencedColumnName = "ID_POINT_INTERET")
-    private PointInteretEntity pointInteret;
+    @JoinColumn(name = "ID_CATEGORIE", referencedColumnName = "ID_CATEGORIE")
+    private CategorieEntity categorie;
     @Id
     @ManyToOne
-    @JoinColumn(name = "ID_SUBDIVISION", referencedColumnName = "ID_SUBDIVISION")
-    private SubdivisionEntity subdivision;
+    @JoinColumn(name = "ID_POINT_INTERET", referencedColumnName = "ID_POINT_INTERET")
+    private PointInteretEntity pointInteret;
 }
