@@ -4,11 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.bz.entities.ParlerEntity;
 import fr.bz.entities.PaysEntity;
-import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
