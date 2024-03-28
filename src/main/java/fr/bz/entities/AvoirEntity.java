@@ -10,6 +10,7 @@ public class AvoirEntity {
     @Id
     @ManyToOne
     @JoinColumn(name = "ID_POINT_INTERET", referencedColumnName = "ID_POINT_INTERET")
+    @Getter(AccessLevel.NONE)
     private PointInteretEntity pointInteret;
     @Id
     @ManyToOne

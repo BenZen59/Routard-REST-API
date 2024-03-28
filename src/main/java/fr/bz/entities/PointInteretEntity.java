@@ -15,4 +15,6 @@ public class PointInteretEntity {
     private String nomPointInteret;
     @OneToMany(mappedBy = "pointInteret")
     private List<CategoriserEntity> categoriserEntityList;
+    @OneToMany(mappedBy = "pointInteret")
+    private List<AvoirEntity> avoirEntityList;
 }

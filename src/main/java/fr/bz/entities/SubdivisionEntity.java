@@ -22,6 +22,4 @@ public class SubdivisionEntity {
     @JoinColumn(name = "CODE_ISO_3166_1", referencedColumnName = "CODE_ISO_3166_1")
     @Getter(AccessLevel.NONE)
     private PaysEntity pays;
-    @OneToMany(mappedBy = "subdivision")
-    private List<AvoirEntity> avoirEntityList;
 }

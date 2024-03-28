@@ -16,6 +16,7 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
+import java.util.Collections;
 import java.util.List;
 
 @Path("/pointsinterets/")
@@ -39,18 +40,32 @@ public class PointInteretResources {
         List<PointInteretEntity> pointsInterets = pointInteretRepository.listAll();
         SubdivisionEntity foundSubdivision = subdivisionRepository.findById(idSubdivision);
         CategorieEntity foundCategorie = categorieRepository.findById(idCategorie);
+        // Vérification si les ID spécifiés existent dans la base de données
+        if (foundSubdivision == null && idSubdivision != 0) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .type(MediaType.TEXT_PLAIN)
+                    .entity("La subdivision avec l'ID " + idSubdivision + " n'existe pas dans la base de données")
+                    .build();
+        }
+        if (foundCategorie == null && idCategorie != 0) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .type(MediaType.TEXT_PLAIN)
+                    .entity("La catégorie avec l'ID " + idCategorie + " n'existe pas dans la base de données")
+                    .build();
+        }
         if (foundSubdivision != null && foundCategorie != null) {
-            pointsInterets = pointInteretRepository.findBySubdivisionAndCategorie(foundSubdivision, foundCategorie);
+            pointsInterets = pointInteretRepository.findBySubdivisionAndCategorie(idSubdivision, idCategorie);
         } else if (foundSubdivision != null) {
-            pointsInterets = pointInteretRepository.findBySubdivision(foundSubdivision);
+            pointsInterets = pointInteretRepository.findBySubdivision(idSubdivision);
         } else if (foundCategorie != null) {
             pointsInterets = pointInteretRepository.findByCategorie(idCategorie);
         } else {
             return Response.ok(PointInteretDto.toDtoList(pointsInterets)).build();
         }
-
+        if (pointsInterets.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Aucun résultats trouvées").build();
+        }
         List<PointInteretDto> pointInteretDtoList = PointInteretDto.toDtoList(pointsInterets);
         return Response.ok(pointInteretDtoList).build();
-
     }
 }

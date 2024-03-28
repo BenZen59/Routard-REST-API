@@ -1,6 +1,7 @@
 package fr.bz.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.bz.entities.AvoirEntity;
 import fr.bz.entities.CategoriserEntity;
 import fr.bz.entities.PointInteretEntity;
 import fr.bz.entities.VilleEntity;
@@ -16,11 +17,14 @@ public class PointInteretDto {
     private String nomPointInteret;
     @JsonProperty(index = 3)
     private List<CategorieDto> categories;
+    @JsonProperty(index = 4)
+    private List<SubdivisionDto> subdivisions;
 
     public PointInteretDto(PointInteretEntity pointInteretEntity) {
         idPointInteret = pointInteretEntity.getIdPointInteret();
         nomPointInteret = pointInteretEntity.getNomPointInteret();
         categories = pointInteretEntity.getCategoriserEntityList().stream().map(CategoriserEntity::getCategorie).map(CategorieDto::new).collect(Collectors.toList());
+        subdivisions = pointInteretEntity.getAvoirEntityList().stream().map(AvoirEntity::getSubdivision).map(SubdivisionDto::new).collect(Collectors.toList());
     }
 
     public static List<PointInteretDto> toDtoList(List<PointInteretEntity> pointInteretEntities) {
