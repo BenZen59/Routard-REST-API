@@ -23,7 +23,6 @@ public class PaysByIdDto {
     @JsonProperty(index = 5)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<LangueDto> langues;
-
     public PaysByIdDto(PaysEntity paysEntity) {
         codeIso31661 = paysEntity.getCodeIso31661();
         nomPays = paysEntity.getNomPays();

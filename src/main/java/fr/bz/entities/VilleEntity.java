@@ -3,6 +3,8 @@ package fr.bz.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity(name = "VILLE")
 @Getter
 public class VilleEntity {
