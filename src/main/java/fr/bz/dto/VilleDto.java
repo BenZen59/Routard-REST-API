@@ -2,6 +2,7 @@ package fr.bz.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.bz.entities.TempererEntity;
 import fr.bz.entities.TypeClimatEntity;
 import fr.bz.entities.VilleEntity;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 public class VilleDto {
@@ -26,7 +28,7 @@ public class VilleDto {
         idVille = villeEntity.getIdVille();
         nomVille = villeEntity.getNomVille();
         subdivision = new SubdivisionDto(villeEntity.getSubdivision());
-        if(villeEntity.getTypeClimat() != null)
+        if (villeEntity.getTypeClimat() != null)
             typeClimat = new TypeClimatDto(villeEntity.getTypeClimat());
     }
 

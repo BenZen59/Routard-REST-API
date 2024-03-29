@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity(name = "PARLER")
 @Getter
+
 public class ParlerEntity {
     @Id
     @ManyToOne
