@@ -37,10 +37,10 @@ public class TempererDto {
         precipitationMoyenne = tempererEntity.getPrecipitationMoyenne();
     }
 
-    public static List<VilleDto> toDtoList(List<VilleEntity> villeEntities) {
-        List<VilleDto> villeDtoList = new ArrayList<>();
-        for (VilleEntity villeEntity : villeEntities)
-            villeDtoList.add(new VilleDto(villeEntity));
-        return villeDtoList;
+    public static List<TempererDto> toDtoList(List<TempererEntity> tempererEntities) {
+        List<TempererDto> tempererDtoList = new ArrayList<>();
+        for (TempererEntity tempererEntity : tempererEntities)
+            tempererDtoList.add(new TempererDto(tempererEntity));
+        return tempererDtoList;
     }
 }

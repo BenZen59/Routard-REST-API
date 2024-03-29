@@ -10,9 +10,4 @@ import java.util.List;
 @RequestScoped
 public class MoisRepository implements PanacheRepositoryBase<MoisEntity, Integer> {
 
-    public List<MoisEntity> findMois(int idMois) {
-        Query query = getEntityManager().createQuery("SELECT m FROM MOIS m JOIN m.tempererEntityList t WHERE t.mois.idMois = :idMois");
-        query.setParameter("idMois", idMois);
-        return query.getResultList();
-    }
 }

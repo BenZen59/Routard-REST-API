@@ -56,7 +56,7 @@ public class VilleResources {
     public Response getTempererbyMois(@PathParam("idVille") int idVille, @QueryParam("idMois") int idMois) {
         VilleEntity foundVille = villeRepository.findById(idVille);
         MoisEntity foundMois = moisRepository.findById(idMois);
-        List<TempererEntity> temperature = tempererRepository.listAll();
+        List<TempererEntity> temperature = tempererRepository.findTemperaturebyVille(idVille);
         if (foundVille == null) {
             return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Cet id de ville n'existe pas !").build();
         }
@@ -67,9 +67,9 @@ public class VilleResources {
                     .build();
         }
         if (foundMois != null) {
-
+            temperature = tempererRepository.findTemperaturebyMoisAndVille(idVille, idMois);
         }
-
-        return Response.ok(villeTemperatureDto).build();
+        List<TempererDto> tempererDtoList = TempererDto.toDtoList(temperature);
+        return Response.ok(tempererDtoList).build();
     }
 }
