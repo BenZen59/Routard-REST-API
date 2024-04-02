@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AccessLevel;
 import lombok.Getter;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class MoisEntity {
     @Column(name = "NOM_MOIS")
     private String nomLangue;
     @OneToMany(mappedBy = "mois")
+    @Getter(AccessLevel.NONE)
     private List<TempererEntity> tempererEntityList;
 }
 
