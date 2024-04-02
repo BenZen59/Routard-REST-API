@@ -69,6 +69,12 @@ public class VilleResources {
         if (foundMois != null) {
             temperature = tempererRepository.findTemperaturebyMoisAndVille(idVille, idMois);
         }
+        if (temperature.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .type(MediaType.TEXT_PLAIN)
+                    .entity("Pas de température pour cette ville")
+                    .build();
+        }
         List<TempererDto> tempererDtoList = TempererDto.toDtoList(temperature);
         return Response.ok(tempererDtoList).build();
     }
