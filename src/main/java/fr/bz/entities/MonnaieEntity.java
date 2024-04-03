@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 public class MonnaieEntity {
     @Id
-    @Column(name = "CODE_ISO_MONNAIE")
+    @Column(name = "CODE_ISO_MONNAIE", columnDefinition = "CHAR(3)")
     private String codeIsoMonnaie;
     @Column(name = "NOM_DEVISE")
     private String nomDevise;

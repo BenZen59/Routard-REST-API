@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 public class ContinentEntity {
     @Id
-    @Column(name = "CODE_CONTINENT")
+    @Column(name = "CODE_CONTINENT", columnDefinition = "CHAR(2)")
     private String codeContinent;
     @Column(name = "NOM_CONTINENT")
     private String nomContinent;

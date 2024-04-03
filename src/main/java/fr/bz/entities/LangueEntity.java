@@ -10,7 +10,7 @@ import lombok.*;
 
 public class LangueEntity {
     @Id
-    @Column(name = "ISO_LANGUE")
+    @Column(name = "ISO_LANGUE", columnDefinition = "CHAR(2)")
     private String isoLangue;
     @Column(name = "NOM_LANGUE")
     private String nomLangue;

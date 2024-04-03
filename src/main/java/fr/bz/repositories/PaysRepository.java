@@ -4,8 +4,11 @@ import fr.bz.entities.ContinentEntity;
 import fr.bz.entities.PaysEntity;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.persistence.ParameterMode;
 import jakarta.persistence.Query;
+import jakarta.persistence.StoredProcedureQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestScoped

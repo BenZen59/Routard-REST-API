@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 public class PaysEntity {
     @Id
-    @Column(name = "CODE_ISO_3166_1")
+    @Column(name = "CODE_ISO_3166_1", columnDefinition = "CHAR(2)")
     private String codeIso31661;
     @Column(name = "NOM_PAYS")
     private String nomPays;
