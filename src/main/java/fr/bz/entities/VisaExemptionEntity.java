@@ -7,7 +7,6 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Getter
-@Setter
 @Entity(name = "VISA_EXEMPTION")
 public class VisaExemptionEntity {
     @EmbeddedId
