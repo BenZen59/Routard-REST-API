@@ -38,6 +38,7 @@ public class ContinentResources {
     @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{codeContinent}/pays")
+
     public Response getPaysByContinent(@PathParam("codeContinent") String codeContinent) {
         ContinentEntity foundContinent = continentRepository.findById(codeContinent);
         if(foundContinent == null)
