@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Data
+@Getter
 @Embeddable
 public class PaysFormalitePK implements Serializable {
     @Column(name="CODE_PAYS", columnDefinition = "CHAR(2)")

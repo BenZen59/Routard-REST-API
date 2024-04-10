@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity(name="PAYS_FORMALITE_EXIGENCE")
 public class FormaliteExigenceEntity {
     @EmbeddedId

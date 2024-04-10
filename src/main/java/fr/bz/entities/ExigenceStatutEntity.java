@@ -7,7 +7,6 @@ import lombok.Setter;
 import java.util.Set;
 
 @Getter
-@Setter
 @Entity(name="EXIGENCE_STATUT")
 public class ExigenceStatutEntity {
     @Id

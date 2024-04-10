@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity(name="FORMALITE_ENTREE")
 public class FormaliteEntreeEntity {
     @Id
