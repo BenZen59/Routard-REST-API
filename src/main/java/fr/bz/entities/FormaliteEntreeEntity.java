@@ -14,7 +14,7 @@ public class FormaliteEntreeEntity {
     @Column(name="NOM_FORMALITE")
     private String nomFormalite;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_TYPE")
     private TypeFormaliteEntity typeFormalite;
 }

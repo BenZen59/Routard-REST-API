@@ -1,9 +1,6 @@
 package fr.bz.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +16,6 @@ public class TypeFormaliteEntity {
     @Column(name = "NOM_TYPE")
     private String nomTypeFormalite;
 
-    @OneToMany(mappedBy = "typeFormalite")
+    @OneToMany(mappedBy = "typeFormalite", fetch = FetchType.LAZY)
     private Set<FormaliteEntreeEntity> formalitesEntree;
 }
