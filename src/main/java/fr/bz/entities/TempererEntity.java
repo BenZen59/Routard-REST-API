@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Entity(name = "TEMPERER")
 @Getter
-
 public class TempererEntity {
     @Id
     @ManyToOne

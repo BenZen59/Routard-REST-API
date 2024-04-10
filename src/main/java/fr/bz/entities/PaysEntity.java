@@ -13,12 +13,13 @@ public class PaysEntity {
     private String codeIso31661;
     @Column(name = "NOM_PAYS")
     private String nomPays;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CODE_CONTINENT", referencedColumnName = "CODE_CONTINENT")
     private ContinentEntity continent;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CODE_ISO_MONNAIE")
     private MonnaieEntity monnaie;
-    @OneToMany(mappedBy = "pays")
+    @OneToMany(mappedBy = "pays", fetch = FetchType.LAZY)
     private List<ParlerEntity> parlerEntityList;
 }
