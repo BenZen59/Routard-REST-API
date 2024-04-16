@@ -1,12 +1,9 @@
 package fr.bz.resources;
 
 import fr.bz.dto.InformerDto;
-import fr.bz.dto.PaysByIdDto;
+import fr.bz.dto.PaysDto;
 import fr.bz.dto.SubdivisionDto;
-import fr.bz.entities.InformerEntity;
-import fr.bz.entities.PaysEntity;
-import fr.bz.entities.SubdivisionEntity;
-import fr.bz.entities.TypeInfoEntity;
+import fr.bz.entities.*;
 import fr.bz.repositories.InformerRepository;
 import fr.bz.repositories.PaysRepository;
 import fr.bz.repositories.SubdivisionRepository;
@@ -37,6 +34,11 @@ public class PaysResources {
     private InformerRepository informerRepository;
 
     @GET
+    public Response getAll() {
+        List<PaysEntity> paysEntities = paysRepository.listAll();
+        return Response.ok(PaysDto.toDtoList(paysEntities)).build();
+    }
+    @GET
     @Path("{codeIso31661}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
     @Consumes(MediaType.APPLICATION_JSON)
@@ -48,7 +50,7 @@ public class PaysResources {
         if (pays == null) {
             return Response.status(Response.Status.NOT_FOUND).type(MediaType.TEXT_PLAIN).entity("Ce code de pays n'existe pas !").build();
         }
-        PaysByIdDto paysByIdDto = new PaysByIdDto(pays);
+        PaysDto paysByIdDto = new PaysDto(pays);
         return Response.ok(paysByIdDto).build();
     }
 

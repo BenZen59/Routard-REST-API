@@ -24,7 +24,7 @@ public class PaysResourcesTest {
     @Test
     public void testGetPaysByIdEndpoint_NotFound() {
         given()
-                .pathParam("codeIso31661", "xx") // Remplacer "xx" avec un codeIso31661 qui n'existe pas dans votre base de données
+                .pathParam("codeIso31661", "xxx") // Remplacer "xx" avec un codeIso31661 qui n'existe pas dans votre base de données
                 .when().get("/pays/{codeIso31661}")
                 .then()
                 .statusCode(404);

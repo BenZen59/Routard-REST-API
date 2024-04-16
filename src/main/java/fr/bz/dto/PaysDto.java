@@ -6,11 +6,12 @@ import fr.bz.entities.ParlerEntity;
 import fr.bz.entities.PaysEntity;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-public class PaysByIdDto {
+public class PaysDto {
     @JsonProperty(index = 1)
     private String codeIso31661;
     @JsonProperty(index = 2)
@@ -23,7 +24,7 @@ public class PaysByIdDto {
     @JsonProperty(index = 5)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<LangueDto> langues;
-    public PaysByIdDto(PaysEntity paysEntity) {
+    public PaysDto(PaysEntity paysEntity) {
         codeIso31661 = paysEntity.getCodeIso31661();
         nomPays = paysEntity.getNomPays();
         continent = new ContinentDto(paysEntity.getContinent());
@@ -33,4 +34,10 @@ public class PaysByIdDto {
             langues = paysEntity.getParlerEntityList().stream().map(ParlerEntity::getLangue).map(LangueDto::new).collect(Collectors.toList());
     }
 
+    public static List<PaysDto> toDtoList(List<PaysEntity> paysEntities) {
+        List<PaysDto> paysDtoList = new ArrayList<>();
+        for (PaysEntity paysEntity : paysEntities)
+            paysDtoList.add(new PaysDto(paysEntity));
+        return paysDtoList;
+    }
 }

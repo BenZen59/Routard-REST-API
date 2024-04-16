@@ -1,11 +1,7 @@
 package fr.bz.resources;
 
-import fr.bz.dto.PaysByContinentDto;
-import fr.bz.dto.PaysByIdDto;
 import fr.bz.dto.SubdivisionDto;
 import fr.bz.dto.VilleDto;
-import fr.bz.entities.ContinentEntity;
-import fr.bz.entities.PaysEntity;
 import fr.bz.entities.SubdivisionEntity;
 import fr.bz.entities.VilleEntity;
 import fr.bz.repositories.SubdivisionRepository;
