@@ -25,24 +25,24 @@ public class FormaliteEntreeResources {
     private VisaExemptionRepository visaExemptionRepository;
 
     @GET
-    @Path("/{code_pays}/formalites_admins")
-    public Response getFormalitesAdmin(@PathParam("code_pays") String codePays) {
+    @Path("/{codeIso31661}/formalites_admins")
+    public Response getFormalitesAdmin(@PathParam("codeIso31661") String codePays) {
         List<FormaliteExigenceEntity> results = paysFormaliteExigenceRepository.listFormalitesAmin(codePays);
 
         return Response.ok(FormaliteExigenceDto.getDtoList(results)).build();
     }
 
     @GET
-    @Path("/{code_pays}/formalites_medicales")
-    public Response getFormalitesMedicale(@PathParam("code_pays") String codePays) {
+    @Path("/{codeIso31661}/formalites_medicales")
+    public Response getFormalitesMedicale(@PathParam("codeIso31661") String codePays) {
         List<FormaliteExigenceEntity> results = paysFormaliteExigenceRepository.listFormalitesMedicales(codePays);
 
         return Response.ok(FormaliteExigenceDto.getDtoList(results)).build();
     }
 
     @GET
-    @Path("/{code_pays}/visa_exempte")
-    public Response getVisaExemptedPays(@PathParam("code_pays") String codePays) {
+    @Path("/{codeIso31661}/visa_exempte")
+    public Response getVisaExemptedPays(@PathParam("codeIso31661") String codePays) {
         List<VisaExemptionEntity> results = visaExemptionRepository.listVisaExemptedPays(codePays);
 
         return Response.ok(VisaExemptionDto.getDtos(results)).build();
